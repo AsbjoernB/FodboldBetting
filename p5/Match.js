@@ -1,6 +1,6 @@
 class Match
 {
-	public Match(round, weekday, day, month, year, hour, minute, hometeam, awayteam, homegoals, awaygoals, spectatorcount)
+	constructor(round, weekday, day, month, year, hour, minute, hometeam, awayteam, homegoals, awaygoals, spectatorcount)
 	{
 		this.round = round;
 		this.weekday = weekday;
