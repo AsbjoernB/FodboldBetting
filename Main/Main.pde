@@ -1,5 +1,6 @@
 // laver en arrayliste af typen button. button input (x-koorinat til placering, y-koordinat til placering, tekst på knap)
-ArrayList<Button> button = new ArrayList<Button>(); 
+ArrayList<Button> button = new ArrayList<Button>();
+TextBox txt = new TextBox(new PVector(300, 300), new PVector(200, 30), true);
 void setup()
 {
   size(600, 400);
@@ -17,5 +18,14 @@ void draw()
   for (Button knap : button) { 
     knap.update();
   }
+  txt.update();
   
+}
+void keyPressed()
+{
+  txt.keyPressed();
+}
+void mousePressed()
+{
+  txt.mousePressed();
 }
