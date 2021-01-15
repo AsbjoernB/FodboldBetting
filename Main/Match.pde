@@ -1,7 +1,7 @@
 class Match
 {
   int round;
-  int weekday;
+  String weekday;
   int day;
   int month;
   int year;
@@ -13,7 +13,7 @@ class Match
   int awayGoals;
   int spectatorCount;
   
-  public Match(int round, int weekday, int day, int month, int year, int hour, int minute, String homeTeam, String awayTeam, int homeGoals, int awayGoals, int spectatorCount)
+  public Match(int round, String weekday, int day, int month, int year, int hour, int minute, String homeTeam, String awayTeam, int homeGoals, int awayGoals, int spectatorCount)
   {
     this.round = round;
     this.weekday = weekday;
@@ -27,5 +27,8 @@ class Match
     this.homeGoals = homeGoals;
     this.awayGoals = awayGoals;
     this.spectatorCount = spectatorCount;
+  }
+  public Match()
+  {
   }
 }
