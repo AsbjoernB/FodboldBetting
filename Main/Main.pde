@@ -1,9 +1,17 @@
+// laver en arrayliste af typen button. button input (x-koorinat til placering, y-koordinat til placering, tekst på knap)
+ArrayList<Button> button = new ArrayList<Button>(); 
 void setup()
 {
   size(600, 400);
   background(0);
+  button.add(new Button(100, 50, "KnapKnap"));
+  button.add(new Button(100, 120, "Knap"));
 }
 
 void draw()
-{
+{  
+  background(200);
+  for (Button knap : button) { 
+    knap.update();
+  }
 }
