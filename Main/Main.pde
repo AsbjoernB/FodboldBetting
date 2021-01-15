@@ -6,6 +6,9 @@ void setup()
   background(0);
   button.add(new Button(100, 50, "KnapKnap"));
   button.add(new Button(100, 120, "Knap"));
+  
+  Team FCN = new Team("FCN");
+  println(FCN.points, FCN.dubs, FCN.goals);
 }
 
 void draw()
@@ -14,7 +17,5 @@ void draw()
   for (Button knap : button) { 
     knap.update();
   }
-  Team FCN = new Team("FCN");
-  println(FCN.points, FCN.dubs, FCN.goals);
   
 }
