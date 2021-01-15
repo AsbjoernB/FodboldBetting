@@ -1,13 +1,16 @@
 public class MatchDatabase
 {
-  public ArrayList<Match> Matches;
+  public Match[] Matches;
   
   public MatchDatabase()
   {
     String[] lines = loadStrings("data/results.txt");
-    for (String line : lines)
+    
+    Matches = new Match[lines.length];
+    
+    for (int i = 0; i < lines.length; i++)
     {
-      String[] data = split(line, ';');
+      String[] data = split(lines[i], ';');
       
       int round = int(data[0].substring(1));
       String[] date = split(data[2], '/');
@@ -32,6 +35,7 @@ public class MatchDatabase
         int(data[8]) // spectator Count
         
       );
+      Matches[i] = m;
       
     }
   }
