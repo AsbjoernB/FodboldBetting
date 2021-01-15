@@ -1,3 +1,4 @@
+//p5
 class Match
 {
 	constructor(round, weekday, day, month, year, hour, minute, hometeam, awayteam, homegoals, awaygoals, spectatorcount)
@@ -7,7 +8,7 @@ class Match
 		this.day = day;
 		this.month = month;
 		this.year = year;
-		this.homegoals = hour;
+		this.hour = hour;
 		this.minute = minute;
 		this.hometeam = hometeam;
 		this.awayteam = awayteam;
