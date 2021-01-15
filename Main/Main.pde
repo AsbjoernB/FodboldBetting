@@ -14,4 +14,7 @@ void draw()
   for (Button knap : button) { 
     knap.update();
   }
+  Team FCN = new Team("FCN");
+  println(FCN.points, FCN.dubs, FCN.goals);
+  
 }
