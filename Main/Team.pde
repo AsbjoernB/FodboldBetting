@@ -1,6 +1,6 @@
 class Team
 {
-  int dubs = 0, goals = 0;
+  int dubs = 0, goals = 0, draws = 0;
   float points;
   String TN;
   Team(String TeamName)
@@ -24,6 +24,10 @@ class Team
           dubs++;
         }
         goals = goals + match.awayGoals;
+      }
+      if(match.awayGoals == match.homeGoals)
+      {
+        draws++;
       }
     }
     
