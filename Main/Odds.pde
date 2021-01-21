@@ -12,7 +12,8 @@ class Odds
     
   }
 }
-  void CreateTeams()
+
+void CreateTeams()
 {
   HashMap<String, Team> teams = new HashMap<String, Team>();
   for(int i  = 0; i < Teams.size(); i++)
