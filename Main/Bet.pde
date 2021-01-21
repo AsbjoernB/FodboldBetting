@@ -15,6 +15,19 @@ class Bet
   
   public float getPayout()
   {
+    int res = match.getResult();
     
+    if (guess != res)
+      return 0;
+    
+    if (res == 0)
+      return money * odds.odds_A;
+    if (res == 1)
+      return money * odds.odds_draw;
+    if (res == 2)
+      return money * odds.odds_B;
+    
+    // not possible
+    return 0;
   }
 }

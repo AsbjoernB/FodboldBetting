@@ -20,31 +20,6 @@ public class TextBox
     this.numbersOnly = numbersOnly;
     value = "";
   }
-  public void keyPressed()
-  {
-    if (isSelected)
-    {
-      if (key == BACKSPACE)
-      {
-        if (value.length() <= 0)
-          return;
-        value = value.substring(0, value.length()-1);
-      }
-      else if (key != CODED)
-      {
-        if (numbersOnly)
-        {
-          
-          if (str(key).matches("[0-9]"))
-            value += key;
-            
-        }
-        else
-          value += key;
-      }
-    }
-    
-  }
   
   public void update()
   {
@@ -59,6 +34,35 @@ public class TextBox
     fill(0);
     text(value, position.x + 5, position.y + dimensions.y/2);
   }
+  
+  public void keyPressed()
+  {
+    if (isSelected)
+    {
+      if (key == BACKSPACE)
+      {
+        if (value.length() <= 0)
+          return;
+        value = value.substring(0, value.length()-1);
+      }
+      
+      else if (key != CODED)
+      {
+        if (numbersOnly)
+        {
+          
+          if (str(key).matches("[0-9]"))
+            value += key;
+            
+        }
+         
+        else if (key != ENTER && key != RETURN)
+          value += key;
+      }
+    }
+    
+  }
+  
   public void mousePressed()
   {
     if (mouseX > position.x && mouseX < position.x + dimensions.x &&
