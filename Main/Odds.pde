@@ -1,10 +1,15 @@
 StringList Teams = new StringList("FCN", "AGF", "BIF", "FCM", "SDR", "VFF", "RFC", "EFB", "HOB", "OB", "FCK", "AAB");
 class Odds
 {
-  
-  Odds()
+  String A;
+  String B;
+  Odds(String A, String B)
   {
+    this.A = A;
+    this.B = B;
     CreateTeams();
+    
+    
   }
 }
   void CreateTeams()
@@ -14,5 +19,4 @@ class Odds
   {
     teams.put(Teams.get(i), new Team(Teams.get(i)));
   }
-  teams.get("FCN");
 }
