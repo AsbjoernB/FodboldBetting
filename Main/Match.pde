@@ -28,7 +28,14 @@ class Match
     this.awayGoals = awayGoals;
     this.spectatorCount = spectatorCount;
   }
-  public Match()
+ 
+  public int getResult()
   {
+    if (homeGoals > awayGoals)
+      return 0;
+    if (homeGoals < awayGoals)
+      return 2;
+    return 1;
+    
   }
 }
