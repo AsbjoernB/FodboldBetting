@@ -14,7 +14,7 @@ void setup()
   teamDatabase = new TeamDatabase();
   
   currentUser = new UserData("Bo");
-  currentScreen = new LoginScreen();
+  currentScreen = new MainScreen();
 }
 
 void draw()
@@ -33,3 +33,4 @@ void keyPressed()
 {
   currentScreen.keyPressed();
 }
+// :D
