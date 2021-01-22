@@ -2,14 +2,14 @@ class Team
 {
   int dubs = 0, goals = 0, draws = 0;
   float points;
-  String TN;
+  String teamName;
   Team(String TeamName)
   {
-    TN = TeamName;
+    teamName = TeamName;
     MatchDatabase m = new MatchDatabase();
     for (Match match : m.Matches)
     {
-      if (TN.equals(match.homeTeam))
+      if (teamName.equals(match.homeTeam))
       {
         if (match.homeGoals > match.awayGoals)
         {
@@ -17,7 +17,7 @@ class Team
         }
         goals = goals + match.homeGoals;
       }
-      else if (TN.equals(match.awayTeam))
+      else if (teamName.equals(match.awayTeam))
       {
         if (match.awayGoals > match.homeGoals)
         {
@@ -30,8 +30,8 @@ class Team
         draws++;
       }
     }
-    
-    println(TN);
     points = goals*0.5+dubs*2;
+    
+    println(teamName);
   }
 }

@@ -3,7 +3,7 @@ ArrayList<Button> button = new ArrayList<Button>();
 
 Screen currentScreen;
 UserData currentUser;
-
+ 
 
 void setup()
 {
@@ -12,8 +12,7 @@ void setup()
   //button.add(new Button(100, 50, "KnapKnap"));
   //button.add(new Button(100, 120, "Knap"));
   currentUser = new UserData("bo");
-  //currentScreen = new LoginScreen();
-  currentScreen = new ResultScreen();
+  currentScreen = new LoginScreen();
 }
 
 void draw()
