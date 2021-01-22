@@ -2,6 +2,7 @@ public class MainScreen extends Screen
 {
   int ax, ay, aw, ah; // amount placement and size
   int ux, uy, uw, uh; // user placement and size
+  int mx, my, mw, mh; // matches placement and size
   
   TextBox bettingAmount;
   
@@ -10,30 +11,35 @@ public class MainScreen extends Screen
   public MainScreen(){
     bettingAmount = new TextBox(new PVector(60, 600), new PVector(200, 60), true);
     resultButton = new Button(new PVector(1000, 600), new PVector(200, 60), "Resultat", color(0,200,200),color(0,255,255), color(0));
-    ax=1030;
-    ay=20;
-    aw=170;
-    ah=60;
+    ax=1030;  ay=20;  aw=170;  ah=60;
+    ux=820;  uy=20;  uw=200;  uh=60;
+    mx=50; my = 100; mw=1000; mh=70;
+    
     
   }
   
   public void update()
   {
-    for(int i=100; i<500; i=i+75){
-      fill(190, 250, 200);
-    rect(50,i,1000,70);
-    }
+    textSize(17);
     textAlign(CENTER, CENTER);
+    for(int i=0; i<6; i++){ // matches 
+      fill(190, 250, 200);
+      rect(50,my+75*i,1000,70);
+      fill(0);
+      text("Kamp "+(i+1)+":", mx+mw/8,my+75*i+mh/2);
+    }
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);//amount
     fill(0);
-    text(currentUser.money, ax+aw/2,ay+ah/2);
+    text("Penge: " + currentUser.money + " skejs", ax+aw/2,ay+ah/2);
     
     fill(190, 250, 200);
-    rect(820, 20, 200, 60);//user
-    
+    rect(ux, uy, uw, uh);//user
+    fill(0);
+    text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);    
     bettingAmount.update();
     resultButton.update();
+    textSize(11);
   }
   
   public void mouseReleased()
