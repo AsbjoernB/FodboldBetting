@@ -11,7 +11,7 @@ void setup()
   background(0);
   //button.add(new Button(100, 50, "KnapKnap"));
   //button.add(new Button(100, 120, "Knap"));
-  currentUser = new UserData("bo");
+  currentUser = new UserData("Bo");
   currentScreen = new LoginScreen();
 }
 

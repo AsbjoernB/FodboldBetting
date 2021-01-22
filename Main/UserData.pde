@@ -1,9 +1,10 @@
 class UserData {
   String username;
   float money;
-  float round;
+  int round;
   String userData;
-  int userNum;
+  int userNum=-1;
+  String[] newlines;
   UserData(String username) {
     this.username = username;
     String[] lines = loadStrings("data/UserData.txt");
@@ -12,33 +13,44 @@ class UserData {
       for (int i=0; i<lines[j].length(); i++) {
         if (lines[j].charAt(i)==',') {
           names[j]=(lines[j].substring(0, i));
+          break;
         }
       }
     }
     for (int i=0; i<names.length; i++) {
-      if (names[i]==username) {
+      if (names[i].substring(0).equals(username)) {
         userNum=i;
         userData=lines[i];
+        String userdata[]=split(userData,",");
+        money=float(userdata[1]);
+        round=int(userdata[2]);
       }
     }
-    if (userData=="") {
-      ArrayList<String> newlines = new ArrayList<String>();
-      for (String l : lines) {
-        newlines.add(l);
+    if (userNum==-1) {
+      newlines = new String[lines.length+1];
+      for (int i =0; i< newlines.length-1; i++) {
+        newlines[i]=lines[i];
       }
-      newlines.add(username+",0,0");
-      String[] addednewlines=new String[newlines.size()];
-      for (int i=0; i<newlines.size();i++) {
-        addednewlines[i]=newlines.get(i);
-      }
-      saveStrings("UserData.txt", addednewlines);
+      newlines[newlines.length-1]= username+",0,0";
+      userNum=newlines.length-1;
+      saveStrings("data/UserData.txt", newlines);
     }
+    else{
+      newlines=lines;
+    }
+    
   }
   // funktion til at tilføje penge, eller trække penge fra brugerens beløb
   void moneyRefresh(float addmoney) {
     money = money + addmoney;
+    dataRefresh(money, round);
   }
   void nextround() {
     round++;
+    dataRefresh(money, round);
+  }
+  void dataRefresh(float money, int round){
+    newlines[userNum]=username+","+money+","+round;
+    saveStrings("data/UserData.txt", newlines);
   }
 }
