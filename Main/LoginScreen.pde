@@ -17,13 +17,12 @@ public class LoginScreen extends Screen
     usernameInput.update();
   }
   
-  public void mouseClicked()
+  public void mouseReleased()
   {
-    usernameInput.mousePressed();
+    usernameInput.mouseReleased();
     
-    if (loginButton.tryPress())
+    if (usernameInput.value != "" && loginButton.tryPress())
     {
-      println("heyo");
       currentUser = new UserData(usernameInput.value);
       currentScreen = new MainScreen();
     }

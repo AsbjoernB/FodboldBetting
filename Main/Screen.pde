@@ -4,7 +4,7 @@ public class Screen
   {
   }
   
-  public void mouseClicked()
+  public void mouseReleased()
   {
   }
   public void keyPressed()

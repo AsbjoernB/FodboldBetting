@@ -63,7 +63,7 @@ public class TextBox
     
   }
   
-  public void mousePressed()
+  public void mouseReleased()
   {
     if (mouseX > position.x && mouseX < position.x + dimensions.x &&
         mouseY > position.y && mouseY < position.y + dimensions.y)

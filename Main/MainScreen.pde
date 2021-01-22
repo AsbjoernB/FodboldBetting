@@ -36,9 +36,13 @@ public class MainScreen extends Screen
     resultButton.update();
   }
   
-  public void mouseClicked()
+  public void mouseReleased()
   {
-    bettingAmount.mousePressed();
+    bettingAmount.mouseReleased();
+    if (resultButton.tryPress())
+    {
+      currentScreen = new ResultScreen();
+    }
   }
   
   public void keyPressed()

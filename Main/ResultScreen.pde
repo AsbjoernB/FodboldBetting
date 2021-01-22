@@ -35,7 +35,7 @@ public class ResultScreen extends Screen
     backButton.update();
   }
   
-  public void mouseClicked()
+  public void mouseReleased()
   {
     if (backButton.tryPress())
     {

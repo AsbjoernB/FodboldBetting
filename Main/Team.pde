@@ -6,8 +6,7 @@ class Team
   Team(String TeamName)
   {
     teamName = TeamName;
-    MatchDatabase m = new MatchDatabase();
-    for (Match match : m.Matches)
+    for (Match match : matchDatabase.Matches)
     {
       if (teamName.equals(match.homeTeam))
       {
