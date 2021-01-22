@@ -23,7 +23,6 @@ public class LoginScreen extends Screen
     
     if (loginButton.tryPress())
     {
-      println("heyo");
       currentUser = new UserData(usernameInput.value);
       currentScreen = new MainScreen();
     }
