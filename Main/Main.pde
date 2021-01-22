@@ -1,25 +1,27 @@
-public MatchDatabase matchDatabase;
-public TeamDatabase teamDatabase;
+// laver en arrayliste af typen button. button input (x-koorinat til placering, y-koordinat til placering, tekst på knap)
+ArrayList<Button> button = new ArrayList<Button>(); 
 
 Screen currentScreen;
 UserData currentUser;
  
 
-
 void setup()
 {
   size(1280, 720);
   background(0);
-  
-  matchDatabase = new MatchDatabase();
-  teamDatabase = new TeamDatabase();
-  
+  //button.add(new Button(100, 50, "KnapKnap"));
+  //button.add(new Button(100, 120, "Knap"));
+  currentUser = new UserData("Bo");
   currentScreen = new LoginScreen();
 }
 
 void draw()
 {  
-  background(200);
+  background(135,200,115);
+  for (Button knap : button) { 
+    knap.update();
+  }
+  
   currentScreen.update();
 }
 
