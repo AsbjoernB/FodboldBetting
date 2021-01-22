@@ -2,6 +2,8 @@
 ArrayList<Button> button = new ArrayList<Button>(); 
 
 Screen currentScreen;
+UserData currentUser;
+
 
 void setup()
 {
@@ -9,8 +11,9 @@ void setup()
   background(0);
   //button.add(new Button(100, 50, "KnapKnap"));
   //button.add(new Button(100, 120, "Knap"));
-  
-  currentScreen = new LoginScreen();
+  currentUser = new UserData("bo");
+  //currentScreen = new LoginScreen();
+  currentScreen = new ResultScreen();
 }
 
 void draw()
@@ -23,7 +26,7 @@ void draw()
   currentScreen.update();
 }
 
-void mouseClicked()
+void mouseReleased()
 {
   currentScreen.mouseClicked();
 }

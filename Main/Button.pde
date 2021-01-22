@@ -1,3 +1,60 @@
+class Button
+{
+  PVector position;
+  PVector dimensions;
+  String text;
+  color col;
+  color hoverCol;
+  color textCol;
+  
+  public Button(PVector position, PVector dimensions, String text, color col, color hoverCol)
+  {
+    this.position = position;
+    this.dimensions = dimensions;
+    this.text = text;
+    this.col = col;
+    this. hoverCol = hoverCol;
+    
+    if ((red(col)+green(col)+blue(col))/3 > 127)
+      textCol = color(0);
+    else
+      textCol = color(255);
+  }
+  public Button(PVector position, PVector dimensions, String text, color col, color hoverCol, color textCol)
+  {
+    this.position = position;
+    this.dimensions = dimensions;
+    this.text = text;
+    this.col = col;
+    this. hoverCol = hoverCol;
+  }
+  
+  public void update()
+  {
+    if (mouseX >= position.x && mouseX <= position.x + dimensions.x && 
+      mouseY >= position.y && mouseY <= position.y + dimensions.y)
+      fill(hoverCol);
+    else
+      fill(col);
+    rect(position.x, position.y, dimensions.x, dimensions.y);
+    
+    fill(textCol);
+    textAlign(CENTER, CENTER);
+    text(text, position.x+(dimensions.x/2), position.y+(dimensions.y/2));
+    
+  }
+  public boolean tryPress()
+  {
+    if (mouseX >= position.x && mouseX <= position.x + dimensions.x && 
+        mouseY >= position.y && mouseY <= position.y + dimensions.y)
+        return true;
+        
+    return false;
+  }
+  
+}
+
+/* gammel button
 class Button {
   PVector placement = new PVector(0, 0); //---- koordinater til knap
   PVector unPressed = new PVector(10, 10); //-- forskydning af den lyse del af knappen (toppen af knappen)
@@ -42,3 +99,4 @@ class Button {
     text (numButtonPress, 400, placement.y+buttonSize.y/2);
   }
 } 
+*/
