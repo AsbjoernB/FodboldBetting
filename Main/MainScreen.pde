@@ -4,10 +4,12 @@ public class MainScreen extends Screen
   
   Button resultButton;
   
+  TripleButton tp;
+  
   public MainScreen(){
     bettingAmount = new TextBox(new PVector(60, 600), new PVector(200, 60), true);
     resultButton = new Button(new PVector(1000, 600), new PVector(200, 60), "Resultat", color(0,200,200),color(0,255,255), color(0));
-    
+    tp = new TripleButton(new PVector(800,105), new PVector(200, 50), new String[]{"2","3","5"}, color(0,200,200),color(0,255,255),color(0));
   }
   
   public void update()
@@ -23,6 +25,7 @@ public class MainScreen extends Screen
     
     bettingAmount.update();
     resultButton.update();
+    tp.update();
   }
   
   public void mouseReleased()
