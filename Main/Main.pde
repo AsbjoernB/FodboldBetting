@@ -17,7 +17,7 @@ void setup()
 
 void draw()
 {  
-  background(200);
+  background(135,200,115);
   for (Button knap : button) { 
     knap.update();
   }
