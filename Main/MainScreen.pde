@@ -9,18 +9,18 @@ public class MainScreen extends Screen
   Button resultButton;
   int Odds;
   Odds odds_A;
-  
   TripleButton tp;
   
   public MainScreen(){
     bettingAmount = new TextBox(new PVector(60, 600), new PVector(200, 60), true);
-    resultButton = new Button(new PVector(1000, 600), new PVector(200, 60), "Resultat", color(0,200,200),color(0,255,255), color(0));
+    resultButton = new Button(new PVector(1000, 600), new PVector(200, 60), "Resultat", color(115,240,130),color(100,200,100), color(0));
     ax=1030;  ay=20;  aw=170;  ah=60;
     ux=820;  uy=20;  uw=200;  uh=60;
     mx=50; my = 100; mw=1000; mh=70;
     
-    
-    tp = new TripleButton(new PVector(800,105), new PVector(200, 50), new String[]{"2","3","5"}, color(0,200,200),color(0,255,255),color(0));
+    for(int i=0; i<0; i++){
+    tp = new TripleButton(new PVector(800,108), new PVector(200, 50), new String[]{"2","3","5"}, color(115,240,130),color(100,200,100),color(150,255,200));
+    }
   }
   
   public void update()
@@ -44,8 +44,8 @@ public class MainScreen extends Screen
     text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);    
     bettingAmount.update();
     resultButton.update();
-    textSize(11);
     tp.update();
+    textSize(11);
   }
   
   public void mouseReleased()
@@ -55,6 +55,7 @@ public class MainScreen extends Screen
     {
       currentScreen = new ResultScreen();
     }
+    tp.tryPress();
   }
   
   public void keyPressed()
