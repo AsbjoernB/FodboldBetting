@@ -40,4 +40,18 @@ public class MatchDatabase
       
     }
   }
+  
+  
+  public Match[] GetRoundMatches(int round)
+  {
+    ArrayList<Match> roundMatches = new ArrayList<Match>();
+    int c = 0;
+    for (Match m : Matches)
+    {
+      if (m.round == round)
+        roundMatches.add(m);
+    }
+    return roundMatches.toArray(new Match[roundMatches.size()]);
+    
+  }
 }
