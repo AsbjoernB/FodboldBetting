@@ -1,4 +1,3 @@
-
 class TeamDatabase
 {
   public StringList TeamNames = new StringList("FCN", "AGF", "BIF", "FCM", "SDR", "VFF", "RFC", "EFB", "HOB", "OB", "FCK", "AAB");
