@@ -28,9 +28,7 @@ void mouseReleased()
 {
   currentScreen.mouseReleased();
 }
-
 void keyPressed()
 {
   currentScreen.keyPressed();
 }
-// :D

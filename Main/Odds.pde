@@ -1,4 +1,3 @@
-
 class Odds
 {
   float odds_A;

@@ -3,6 +3,8 @@ public class MainScreen extends Screen
   TextBox bettingAmount;
   
   Button resultButton;
+  int Odds;
+  Odds odds_A;
   
   TripleButton tp;
   
