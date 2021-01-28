@@ -4,6 +4,7 @@ class UserData {
   int round;
   String userData;
   int userNum=-1;
+  float startAmount = 1000;
   String[] newlines;
   UserData(String username) {
     this.username = username;
@@ -31,7 +32,8 @@ class UserData {
       for (int i =0; i< newlines.length-1; i++) {
         newlines[i]=lines[i];
       }
-      newlines[newlines.length-1]= username+",0,0";
+      newlines[newlines.length-1]= username+","+startAmount+",0";
+      money=startAmount;
       userNum=newlines.length-1;
       saveStrings("data/UserData.txt", newlines);
     }
