@@ -18,16 +18,16 @@ class Bet
     int res = match.getResult();
     
     if (guess != res)
-      return 0;
+      return -money;
     
     if (res == 0)
-      return money * odds.odds_A;
+      return money * odds.odds_A - money;
     if (res == 1)
-      return money * odds.odds_draw;
+      return money * odds.odds_draw - money;
     if (res == 2)
-      return money * odds.odds_B;
+      return money * odds.odds_B - money;
     
     // not possible
-    return 0;
+    return -money;
   }
 }

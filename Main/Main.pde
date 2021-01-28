@@ -9,12 +9,15 @@ void setup()
 {
   size(1280, 720);
   background(0);
-  
   matchDatabase = new MatchDatabase();
   teamDatabase = new TeamDatabase();
   
   currentUser = new UserData("Bo");
-  currentScreen = new MainScreen();
+  currentScreen = new ResultScreen();
+  
+  
+  Match[] m = matchDatabase.GetRoundMatches(1);
+  println(m[5].homeTeam);
 }
 
 void draw()
