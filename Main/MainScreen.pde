@@ -12,15 +12,15 @@ public class MainScreen extends Screen
   TripleButton tp;
   
   public MainScreen(){
-    bettingAmount = new TextBox(new PVector(60, 600), new PVector(200, 60), true);
-    resultButton = new Button(new PVector(1000, 600), new PVector(200, 60), "Resultat", color(115,240,130),color(100,200,100), color(0));
-    ax=1030;  ay=20;  aw=170;  ah=60;
-    ux=820;  uy=20;  uw=200;  uh=60;
-    mx=50; my = 100; mw=1000; mh=70;
+    bettingAmount = new TextBox(new PVector(50, 600), new PVector(200, 60), true);
+    resultButton = new Button(new PVector(1030, 600), new PVector(200, 60), "Resultat", color(115,240,130),color(100,200,100), color(0));
+    ax=1030;  ay=20;  aw=200;  ah=60;
+    ux=800;  uy=20;  uw=200;  uh=60;
+    mx=50; my = 100; mw=1180; mh=70;
     
-    for(int i=0; i<0; i++){
+    //for(int i=0; i<0; i++){
     tp = new TripleButton(new PVector(800,108), new PVector(200, 50), new String[]{"2","3","5"}, color(115,240,130),color(100,200,100),color(150,255,200));
-    }
+    //}
   }
   
   public void update()
@@ -29,7 +29,7 @@ public class MainScreen extends Screen
     textAlign(CENTER, CENTER);
     for(int i=0; i<6; i++){ // matches 
       fill(190, 250, 200);
-      rect(50,my+75*i,1000,70);
+      rect(mx,my+75*i,mw,mh);
       fill(0);
       text("Kamp "+(i+1)+":", mx+mw/8,my+75*i+mh/2);
     }
