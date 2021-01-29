@@ -32,7 +32,7 @@ class UserData {
       for (int i =0; i< newlines.length-1; i++) {
         newlines[i]=lines[i];
       }
-      newlines[newlines.length-1]= username+","+startAmount+",0";
+      newlines[newlines.length-1]= username+","+startAmount+",1";
       money=startAmount;
       userNum=newlines.length-1;
       saveStrings("data/UserData.txt", newlines);
