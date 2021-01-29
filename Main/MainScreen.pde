@@ -9,7 +9,7 @@ public class MainScreen extends Screen
   Button resultButton;
   int Odds;
   Odds odds_A;
-  TripleButton tp;
+  TripleButton[] tp;
   
   public MainScreen(){
     bettingAmount = new TextBox(new PVector(60, 600), new PVector(200, 60), true);
@@ -18,8 +18,13 @@ public class MainScreen extends Screen
     ux=820;  uy=20;  uw=200;  uh=60;
     mx=50; my = 100; mw=1000; mh=70;
     
-    for(int i=0; i<0; i++){
-    tp = new TripleButton(new PVector(800,108), new PVector(200, 50), new String[]{"2","3","5"}, color(115,240,130),color(100,200,100),color(150,255,200));
+    
+    for(int i=0; i<6; i++){
+      tp[i] = new TripleButton(new PVector(800,(my+80)+75*i), new PVector(200, 50), new String[]{"2","3","5"}, color(115,240,130),color(100,200,100),color(150,255,200));
+      for(int j=0; i<6; i++){
+        tp[j].update();
+        tp[j].tryPress();
+      }
     }
   }
   
@@ -44,7 +49,6 @@ public class MainScreen extends Screen
     text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);    
     bettingAmount.update();
     resultButton.update();
-    tp.update();
     textSize(11);
   }
   
@@ -55,7 +59,6 @@ public class MainScreen extends Screen
     {
       currentScreen = new ResultScreen();
     }
-    tp.tryPress();
   }
   
   public void keyPressed()
