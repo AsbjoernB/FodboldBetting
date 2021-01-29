@@ -13,6 +13,14 @@ public class LoginScreen extends Screen
   
   public void update()
   {
+    fill(255);
+    textSize(24);
+    textAlign(CENTER, CENTER);
+    text("Indtast brugernavn",width/2, height/2-40);
+    
+    fill(0);
+    textSize(11);
+    textAlign(LEFT, TOP);
     loginButton.update();
     usernameInput.update();
   }
