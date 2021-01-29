@@ -32,7 +32,7 @@ public class MainScreen extends Screen
       fill(190, 250, 200);
       rect(mx,my+75*i,mw,mh);
       fill(0);
-      text("Kamp "+(i+1)+": "+match[i].homeTeam+" - "+match[i].awayTeam+"  "+match[i].weekday+" den "+match[i].day+"/"+match[i].month+" "+match[i].year+ " kl: "+match[i].hour+":"+match[i].minute, mx+mw/5,my+75*i+mh/2);
+      text("Kamp "+(i+1)+": "+match[i].homeTeam+" - "+match[i].awayTeam+"  "+match[i].weekday+" den "+match[i].day+"/"+match[i].month+" "+match[i].year+ " kl: "+match[i].hour+":"+nf(match[i].minute,2), mx+mw/5,my+75*i+mh/2);
     }
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);//amount
