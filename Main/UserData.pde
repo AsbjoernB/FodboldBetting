@@ -1,7 +1,7 @@
 class UserData {
   String username;
   float money;
-  int round;
+  int round = 1;
   String userData;
   int userNum=-1;
   float startAmount = 1000;

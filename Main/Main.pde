@@ -12,8 +12,8 @@ void setup()
   matchDatabase = new MatchDatabase();
   teamDatabase = new TeamDatabase();
   
-  currentUser = new UserData("Bo");
-  currentScreen = new MainScreen();
+  //currentUser = new UserData("Bo");
+  currentScreen = new LoginScreen();
   
   
   Match[] m = matchDatabase.GetRoundMatches(1);

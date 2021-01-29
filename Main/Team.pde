@@ -3,6 +3,7 @@ class Team
   int dubs = 0, goals = 0, draws = 0;
   float points;
   String teamName;
+  
   Team(String TeamName)
   {
     teamName = TeamName;

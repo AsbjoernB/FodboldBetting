@@ -7,10 +7,11 @@ public class MainScreen extends Screen
   
   TextBox bettingAmount;
   
+  Match[] matches;
+  
   Button resultButton;
-  int Odds;
-  Odds odds_A;
-  TripleButton tp;
+  Odds[] odds;
+  TripleButton[] tripleButtons;
   
   public MainScreen(){
     ax=1030;  ay=20;  aw=200;  ah=60;
@@ -20,10 +21,21 @@ public class MainScreen extends Screen
     
     bettingAmount = new TextBox(new PVector(mx, ny), new PVector(nw, nh), true); // er placeret i forhold til de andre knapper og felter
     resultButton = new Button(new PVector(nx, ny), new PVector(nw, nh), "Resultat", color(115,240,130),color(100,200,100), color(0));
+   
+    println(currentUser.round);
+    matches = matchDatabase.GetRoundMatches(currentUser.round);
     
-    //for(int i=0; i<0; i++){
-    tp = new TripleButton(new PVector(800,108), new PVector(200, 50), new String[]{"2","3","5"}, color(115,240,130),color(100,200,100),color(150,255,200));
-    //}
+    odds = new Odds[6];
+    for (int i = 0; i < 6; i++)
+    {
+      odds[i] = new Odds(matches[i].homeTeam, matches[i].awayTeam);
+    }
+    tripleButtons = new TripleButton[6];
+    for(int i=0; i<6; i++){
+      tripleButtons[i] = new TripleButton(new PVector(800,108 + 75*i), new PVector(200, 50), new String[]{nfc(odds[i].odds_A, 2), nfc(odds[i].odds_draw, 2), nfc(odds[i].odds_B, 2)}, color(115,240,130),color(100,200,100),color(150,255,200));
+    }
+    
+    
   }
   
   public void update()
@@ -43,7 +55,7 @@ public class MainScreen extends Screen
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);//amount
     fill(0);
-    text("Penge: " + currentUser.money + " skejs", ax+aw/2,ay+ah/2);
+    text("Penge: " + nfc(currentUser.money, 2) + " skejs", ax+aw/2,ay+ah/2);
     
     fill(190, 250, 200);
     rect(ux, uy, uw, uh);//user
@@ -51,7 +63,12 @@ public class MainScreen extends Screen
     text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);    
     bettingAmount.update();
     resultButton.update();
-    tp.update();
+    int i = 0;
+    for (TripleButton tp : tripleButtons)
+    {
+      i++;
+      tp.update();
+    }
     textAlign(LEFT, CENTER);
     textSize(65);
     fill(255);
@@ -65,9 +82,17 @@ public class MainScreen extends Screen
     bettingAmount.mouseReleased();
     if (resultButton.tryPress())
     {
-      currentScreen = new ResultScreen();
+      Bet[] bets = new Bet[matches.length];
+      for (int i = 0; i < matches.length; i++)
+      {
+        bets[i] = new Bet(matches[i], tripleButtons[i].selectedOption, 20);
+      }
+      currentScreen = new ResultScreen(bets);
     }
-    tp.tryPress();
+    for (TripleButton tp : tripleButtons)
+    {
+      tp.tryPress();
+    }
   }
   
   public void keyPressed()
