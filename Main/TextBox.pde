@@ -5,13 +5,15 @@ public class TextBox
   public boolean numbersOnly;
   public String value;
   public boolean isSelected = false;
+  String defaultValue;
   
-  public TextBox(PVector position, PVector dimensions, boolean numbersOnly, String intialValue)
+  public TextBox(PVector position, PVector dimensions, boolean numbersOnly, String defaultValue)
   {
     this.position = position;
     this.dimensions = dimensions;
     this.numbersOnly = numbersOnly;
-    this.value = intialValue;
+    this.value = defaultValue;
+    this.defaultValue = defaultValue;
   }
   public TextBox(PVector position, PVector dimensions, boolean numbersOnly)
   {
@@ -19,6 +21,7 @@ public class TextBox
     this.dimensions = dimensions;
     this.numbersOnly = numbersOnly;
     value = "";
+    defaultValue = "";
   }
   
   public void update()
@@ -51,7 +54,7 @@ public class TextBox
         if (numbersOnly)
         {
           
-          if (str(key).matches("[0-9]"))
+          if (str(key).matches("[0-9]") || (str(key).equals(".") && !value.contains(".")))
             value += key;
             
         }
@@ -69,8 +72,16 @@ public class TextBox
         mouseY > position.y && mouseY < position.y + dimensions.y)
     {
       isSelected = true;
+      if (value == defaultValue)
+        value = "";
     }
     else
+    {
       isSelected = false;
+      if (value.equals(""))
+        value = defaultValue;
+    }
+      
+      
   }
 }
