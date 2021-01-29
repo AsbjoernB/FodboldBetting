@@ -56,8 +56,8 @@ public class ResultScreen extends Screen
     textSize(17);
     textAlign(CENTER, CENTER);
     for(int i=0; i<6; i++){ // matches 
-      fill(190, 250, 200);
-      rect(50,my+75*i,1000,70);
+      fill(180, 230, 143);
+      rect(50,my+75*i,1000,70, 7);
       fill(0);
       text(bets[i].match.homeTeam + " - " + bets[i].match.awayTeam, mx+mw/8,my+75*i+mh/2);
       
@@ -66,15 +66,15 @@ public class ResultScreen extends Screen
         if (j == bets[i].match.getResult())
         {
           if (j == bets[i].guess)
-            fill(255, 255, 0);
+            fill(241, 247, 44);
           else
-            fill(0, 255, 0);
+            fill(50, 230, 60);
         }
         else if (j == bets[i].guess)
-          fill(255,0,0);
+          fill(235,40,40);
         else
           fill(127);
-        rect(mx+mw/3+(mh*j), my + mh/10 + 75*i, mh*8/10, mh*8/10);
+        rect(mx+mw/3+(mh*j), my + mh/10 + 75*i, mh*8/10, mh*8/10, 7);
         fill(0);
         String txt = "";
         switch (j)
