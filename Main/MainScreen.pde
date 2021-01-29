@@ -12,6 +12,7 @@ public class MainScreen extends Screen
   Button resultButton;
   Odds[] odds;
   TripleButton[] tripleButtons;
+  TextBox[] moneyInputs;
   
   public MainScreen(){
     ax=1030;  ay=20;  aw=200;  ah=60;
@@ -36,10 +37,25 @@ public class MainScreen extends Screen
     }
     
     
+    moneyInputs = new TextBox[6];
+    for (int i = 0; i < 6; i++)
+    {
+      moneyInputs[i] = new TextBox(new PVector(mw/2, my + mh*2/10 + 75*i), new PVector(mw/10,mh*6/10), true, str(0)); 
+    }
+    
+    
   }
   
   public void update()
   {
+    // title
+    textAlign(LEFT, CENTER);
+    textSize(65);
+    fill(255);
+    text("BET PÅ RUNDE "+currentUser.round, mx, uy+uh/2);
+    fill(0);
+    textSize(11);
+    
     textAlign(LEFT, CENTER);
     Match[] match = matchDatabase.GetRoundMatches(currentUser.round);
     for(int i=0; i<6; i++){ // matches 
@@ -49,32 +65,36 @@ public class MainScreen extends Screen
       textSize(24);
       text(match[i].homeTeam+" - "+match[i].awayTeam, mx*2,my+75*i+mh/3);
       textSize(17);
-      text(match[i].weekday+"dag d. "+match[i].day+"/"+match[i].month+" "+match[i].year+ " kl. "+match[i].hour+":"+nf(match[i].minute,2), mx*2,my+75*i+2*(mh/3));
+      text(match[i].weekday+"dag d. "+match[i].day+"/"+match[i].month+" "+match[i].year+ " kl. "+match[i].hour+":"+nf(match[i].minute,2), mx*2,my+75*i+2*(mh/3));  
     }
+    for (TripleButton tp : tripleButtons)
+    {
+      tp.update();
+    }
+    for (TextBox tb : moneyInputs)
+    {
+      tb.update();
+    }
+    
+    
+    // current money
     textAlign(CENTER, CENTER);
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);//amount
     fill(0);
     text("Penge: " + nfc(currentUser.money, 2) + " skejs", ax+aw/2,ay+ah/2);
     
+    // username
     fill(190, 250, 200);
     rect(ux, uy, uw, uh);//user
     fill(0);
-    text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);    
+    text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);
+    
+    // buttons
     bettingAmount.update();
     resultButton.update();
-    int i = 0;
-    for (TripleButton tp : tripleButtons)
-    {
-      i++;
-      tp.update();
-    }
-    textAlign(LEFT, CENTER);
-    textSize(65);
-    fill(255);
-    text("BET PÅ RUNDE "+currentUser.round, mx, uy+uh/2);
-    fill(0);
-    textSize(11);
+    
+
   }
   
   public void mouseReleased()
@@ -85,18 +105,29 @@ public class MainScreen extends Screen
       Bet[] bets = new Bet[matches.length];
       for (int i = 0; i < matches.length; i++)
       {
-        bets[i] = new Bet(matches[i], tripleButtons[i].selectedOption, 20);
+        bets[i] = new Bet(matches[i], tripleButtons[i].selectedOption, float(moneyInputs[i].value));
       }
+      currentUser.round++;
+      if (currentUser.round > 33)
+        currentUser.round = 1;      
       currentScreen = new ResultScreen(bets);
     }
     for (TripleButton tp : tripleButtons)
     {
       tp.tryPress();
     }
+    for (TextBox tb : moneyInputs)
+    {
+      tb.mouseReleased();
+    }
   }
   
   public void keyPressed()
   {
     bettingAmount.keyPressed();
+    for (TextBox tb : moneyInputs)
+    {
+      tb.keyPressed();
+    }
   }
 }

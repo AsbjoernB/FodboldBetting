@@ -124,7 +124,6 @@ public class ResultScreen extends Screen
   {
     if (backButton.tryPress())
     {
-      currentUser.round++;
       currentScreen = new MainScreen();
     }
   }
