@@ -27,11 +27,12 @@ public class MainScreen extends Screen
   {
     textSize(17);
     textAlign(CENTER, CENTER);
+    Match[] match = matchDatabase.GetRoundMatches(currentUser.round+1);
     for(int i=0; i<6; i++){ // matches 
       fill(190, 250, 200);
       rect(mx,my+75*i,mw,mh);
       fill(0);
-      text("Kamp "+(i+1)+":", mx+mw/8,my+75*i+mh/2);
+      text("Kamp "+(i+1)+": "+match[i].homeTeam+" - "+match[i].awayTeam+"  "+match[i].weekday+" den "+match[i].day+"/"+match[i].month+" "+match[i].year+ " kl: "+match[i].hour+":"+match[i].minute, mx+mw/5,my+75*i+mh/2);
     }
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);//amount
