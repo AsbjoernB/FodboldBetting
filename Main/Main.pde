@@ -13,7 +13,7 @@ void setup()
   teamDatabase = new TeamDatabase();
   
   currentUser = new UserData("Bo");
-  currentScreen = new ResultScreen();
+  currentScreen = new MainScreen();
   
   
   Match[] m = matchDatabase.GetRoundMatches(1);
