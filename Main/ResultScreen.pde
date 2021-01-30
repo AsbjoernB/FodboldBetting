@@ -11,27 +11,7 @@ public class ResultScreen extends Screen
   int mx, my, mw, mh; // matches placement and size
   int sx, sy, sw, sh; // sum / total placement and size
   int nx, ny, nw, nh; // next-button (tilbage) placement and size
-  
-  // testing
-  public ResultScreen()
-  {
-    ax=1030;  ay=20;  aw=200;  ah=60;
-    ux=800;  uy=20;  uw=200;  uh=60;
-    mx=50; my = 100; mw=1180; mh=70;
-    sw=200;  sh=60;
-    sx=mx+mw-sw;  sy=550;  
-    nx=1030; ny = 640; nw=200; nh=60;
-    backButton = new Button(new PVector(width-150, height-100), new PVector(100, 50), "Tilbage", color(0,200,200), color(0,255,255));
-    bets = new Bet[]
-    {
-      new Bet(matchDatabase.Matches[0], 0, 20),
-      new Bet(matchDatabase.Matches[1], 1, 20),
-      new Bet(matchDatabase.Matches[2], 2, 20),
-      new Bet(matchDatabase.Matches[3], 0, 20),
-      new Bet(matchDatabase.Matches[4], 1, 20),
-      new Bet(matchDatabase.Matches[5], 2, 20),
-    };
-  }
+
   
   public ResultScreen(Bet[] bets)
   {
