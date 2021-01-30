@@ -78,7 +78,7 @@ public class ResultScreen extends Screen
         if (j == bets[i].match.getResult())
         {
           if (j == bets[i].guess)
-            fill(241, 247, 44);
+            fill(249,255,2);
           else
             fill(50, 230, 60);
         }
