@@ -20,8 +20,8 @@ public class MainScreen extends Screen
     mx=50; my = 100; mw=1180; mh=70;
     nx=1030; ny = 640; nw=200; nh=60;
     
-    bettingAmount = new TextBox(new PVector(mx, ny), new PVector(nw, nh), true); // er placeret i forhold til de andre knapper og felter
-    resultButton = new Button(new PVector(nx, ny), new PVector(nw, nh), "Resultat", color(115,240,130),color(100,200,100), color(0));
+    //bettingAmount = new TextBox(new PVector(mx, ny), new PVector(nw, nh), true); // er placeret i forhold til de andre knapper og felter
+    resultButton = new Button(new PVector(nx, ny), new PVector(nw, nh), "Resultat",  color(0,200,200), color(0,255,255), color(0));
    
     println(currentUser.round);
     matches = matchDatabase.GetRoundMatches(currentUser.round);
@@ -33,7 +33,7 @@ public class MainScreen extends Screen
     }
     tripleButtons = new TripleButton[6];
     for(int i=0; i<6; i++){
-      tripleButtons[i] = new TripleButton(new PVector(800,108 + 75*i), new PVector(200, 50), new String[]{nfc(odds[i].odds_A, 2), nfc(odds[i].odds_draw, 2), nfc(odds[i].odds_B, 2)}, color(115,240,130),color(100,200,100),color(150,255,200));
+      tripleButtons[i] = new TripleButton(new PVector(800,my+mh/10 + 75*i), new PVector(200, mh-mh/5), new String[]{nfc(odds[i].odds_A, 2), nfc(odds[i].odds_draw, 2), nfc(odds[i].odds_B, 2)}, color(115,240,130),color(100,200,100),color(150,255,200));
     }
     
     
@@ -91,7 +91,7 @@ public class MainScreen extends Screen
     text("Bruger: "+currentUser.username, ux+uw/2,uy+uh/2);
     
     // buttons
-    bettingAmount.update();
+    //bettingAmount.update();
     resultButton.update();
     
 
@@ -99,7 +99,7 @@ public class MainScreen extends Screen
   
   public void mouseReleased()
   {
-    bettingAmount.mouseReleased();
+    //bettingAmount.mouseReleased();
     if (resultButton.tryPress())
     {
       Bet[] bets = new Bet[matches.length];
@@ -124,7 +124,7 @@ public class MainScreen extends Screen
   
   public void keyPressed()
   {
-    bettingAmount.keyPressed();
+    //bettingAmount.keyPressed();
     for (TextBox tb : moneyInputs)
     {
       tb.keyPressed();

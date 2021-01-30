@@ -1,4 +1,4 @@
-public class ResultScreen extends Screen
+public class ResultScreen extends Screen  
 {
   Button backButton;
   
@@ -7,17 +7,20 @@ public class ResultScreen extends Screen
   float sum;
   
   int ax, ay, aw, ah; // amount placement and size
-  int sx, sy, sw, sh; // sum / total placement and size
   int ux, uy, uw, uh; // user placement and size
   int mx, my, mw, mh; // matches placement and size
+  int sx, sy, sw, sh; // sum / total placement and size
+  int nx, ny, nw, nh; // next-button (tilbage) placement and size
   
   // testing
   public ResultScreen()
   {
     ax=1030;  ay=20;  aw=200;  ah=60;
-    sx=850;  sy=550;  sw=200;  sh=60;
     ux=800;  uy=20;  uw=200;  uh=60;
     mx=50; my = 100; mw=1180; mh=70;
+    sw=200;  sh=60;
+    sx=mx+mw-sw;  sy=550;  
+    nx=1030; ny = 640; nw=200; nh=60;
     backButton = new Button(new PVector(width-150, height-100), new PVector(100, 50), "Tilbage", color(0,200,200), color(0,255,255));
     bets = new Bet[]
     {
@@ -33,9 +36,11 @@ public class ResultScreen extends Screen
   public ResultScreen(Bet[] bets)
   {
     ax=1030;  ay=20;  aw=200;  ah=60;
-    sx=850;  sy=550;  sw=200;  sh=60;
     ux=800;  uy=20;  uw=200;  uh=60;
     mx=50; my = 100; mw=1180; mh=70;
+    sw=200;  sh=60;
+    sx=mx+mw-sw;  sy=550;
+    nx=1030; ny = 640; nw=200; nh=60;
     
     this.bets = bets;
     
@@ -48,16 +53,23 @@ public class ResultScreen extends Screen
     println(sum);
     currentUser.moneyRefresh(sum);
     
-    backButton = new Button(new PVector(width-150, height-100), new PVector(100, 50), "Tilbage", color(0,200,200), color(0,255,255));
+    backButton = new Button(new PVector(nx, ny), new PVector(nw, nh), "Tilbage", color(0,200,200), color(0,255,255));
   }
   
   public void update()
-  {
+  {    
+    // title
+    textAlign(LEFT, CENTER);
+    textSize(65);
+    fill(255);
+    text("RESULTAT AF RUNDE "+(currentUser.round-1), mx, uy+uh/2);
+    fill(0);
     textSize(17);
     textAlign(CENTER, CENTER);
+    Match[] match = matchDatabase.GetRoundMatches(currentUser.round);
     for(int i=0; i<6; i++){ // matches 
-      fill(180, 230, 143);
-      rect(50,my+75*i,1000,70, 7);
+      fill(190, 250, 200);
+      rect(mx,my+75*i,mw,mh);
       fill(0);
       text(bets[i].match.homeTeam + " - " + bets[i].match.awayTeam, mx+mw/8,my+75*i+mh/2);
       
@@ -73,8 +85,8 @@ public class ResultScreen extends Screen
         else if (j == bets[i].guess)
           fill(235,40,40);
         else
-          fill(127);
-        rect(mx+mw/3+(mh*j), my + mh/10 + 75*i, mh*8/10, mh*8/10, 7);
+          fill(200);
+        rect(mx+mw/3+(mh*j), my + mh/10 + 75*i, mh-mh/5, mh-mh/5);
         fill(0);
         String txt = "";
         switch (j)
@@ -94,7 +106,7 @@ public class ResultScreen extends Screen
       if (payout < 0)
         fill(255,0,0);
       else
-        fill(0, 255, 0);
+        fill(10, 175, 10);
         
       text(nfp(payout, 1, 2) + " skejs", mx+mw*4/5, my+75*i+mh/2);
     }
@@ -106,8 +118,8 @@ public class ResultScreen extends Screen
       if (sum < 0)
         fill(255,0,0);
       else
-        fill(0, 255, 0);
-    text(sum, sx+sw/2, sy+sh/2);
+        fill(10, 175, 10);
+    text(nfc(sum,2) + " skejs", sx+sw/2, sy+sh/2);
     
     // money
     fill(190, 250, 200);
