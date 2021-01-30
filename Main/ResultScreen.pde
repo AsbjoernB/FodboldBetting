@@ -30,7 +30,7 @@ public class ResultScreen extends Screen
     {
       sum += b.getPayout();
     }
-    println(sum);
+    // opdater skejs
     currentUser.moneyRefresh(sum);
     
     backButton = new Button(new PVector(nx, ny), new PVector(nw, nh), "Tilbage", color(0,200,200), color(0,255,255));
@@ -38,15 +38,18 @@ public class ResultScreen extends Screen
   
   public void update()
   {    
-    // title
+    // titel
     textAlign(LEFT, CENTER);
     textSize(65);
     fill(255);
     text("RESULTAT AF RUNDE "+(currentUser.round-1), mx, uy+uh/2);
+    
+    
     fill(0);
     textSize(17);
     textAlign(CENTER, CENTER);
-    Match[] match = matchDatabase.GetRoundMatches(currentUser.round);
+    
+    // tegner alle kampene
     for(int i=0; i<6; i++){ // matches 
       fill(190, 250, 200);
       rect(mx,my+75*i,mw,mh);
@@ -78,7 +81,7 @@ public class ResultScreen extends Screen
         text(txt, mx+mw/3+(mh*j) + mh*4/10, my + mh/10 + 75*i + mh*4/10);
       }
       
-      // gain / loss
+      // tab / gevinst
       text(nfc(bets[i].money, 2) + " skejs", mx+mw*3/5, my+75*i+mh/2);
       float payout = bets[i].getPayout();
       
@@ -87,11 +90,11 @@ public class ResultScreen extends Screen
         fill(205,92,92);
       else
         fill(0, 115, 0);
-        
+      
       text(nfp(payout, 1, 2) + " skejs", mx+mw*4/5, my+75*i+mh/2);
     }
     
-    // net loss/gain   
+    // samlet tab / gevinst
     fill(190, 250, 200);
     rect(sx, sy, sw, sh);
     // red / green
@@ -99,7 +102,7 @@ public class ResultScreen extends Screen
         fill(205,92,92);
       else
         fill(0, 115, 0);
-    text(nfc(sum,2) + " skejs", sx+sw/2, sy+sh/2);
+    text(nfp(sum, 1, 2) + " skejs", sx+sw/2, sy+sh/2);
     
     // money
     fill(190, 250, 200);

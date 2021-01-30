@@ -1,5 +1,6 @@
 class TripleButton extends Button
 {
+  // den valgte mulighed er enten 0, 1 eller 2
   public int selectedOption = -1;
   
   color selectedCol;
@@ -15,8 +16,10 @@ class TripleButton extends Button
   
   public void update()
   {
+    // tegner hver af de tre knapper
     for (int i = 0; i < 3; i++)
     {
+      // sætter farven alt efter om knappen er valgt og om musen er over den eller ej
       if (i == selectedOption)
         fill(selectedCol);
       else if (mouseX >= position.x + i*dimensions.x/3 && mouseX <= position.x + (i+1)*dimensions.x/3 && 
@@ -26,23 +29,14 @@ class TripleButton extends Button
         fill(col);
       rect(position.x + i*dimensions.x/3, position.y, dimensions.x/3, dimensions.y);
       
+      // text på hver af knapperne
       fill(textCol);
       textAlign(CENTER, CENTER);
       text(texts[i], position.x + i*dimensions.x/3 + dimensions.x/6, position.y + dimensions.y/2);
     }
-    /*
-    if (mouseX >= position.x && mouseX <= position.x + dimensions.x && 
-      mouseY >= position.y && mouseY <= position.y + dimensions.y)
-      fill(hoverCol);
-    else
-      fill(col);
-    rect(position.x, position.y, dimensions.x, dimensions.y);
-    
-    fill(textCol);
-    textAlign(CENTER, CENTER);
-    text(text, position.x+(dimensions.x/2), position.y+(dimensions.y/2));
-    */
   }
+  
+  // forsøger at trykke på knappen. Returnerer true hvis musen er inden for knappen
   public boolean tryPress()
   {
     for (int i = 0; i < 3; i++)

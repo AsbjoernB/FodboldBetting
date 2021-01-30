@@ -9,24 +9,21 @@ void setup()
 {
   size(1280, 720);
   background(0);
+  
+  // indlæser/genererer begge databaser
   matchDatabase = new MatchDatabase();
   teamDatabase = new TeamDatabase();
   
-  //currentUser = new UserData("Bo");
   currentScreen = new LoginScreen();
-  
-  
-  Match[] m = matchDatabase.GetRoundMatches(1);
-  println(m[5].homeTeam);
 }
 
 void draw()
 {  
   background(115,166,87);
-  
   currentScreen.update();
 }
 
+// key pressed & mouse release funktioner. Disse er relevante for knapper og tekstfelter
 void mouseReleased()
 {
   currentScreen.mouseReleased();

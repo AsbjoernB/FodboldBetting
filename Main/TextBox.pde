@@ -24,6 +24,7 @@ public class TextBox
     defaultValue = "";
   }
   
+  // tegn på skærmen
   public void update()
   {
     textAlign(LEFT, CENTER);
@@ -38,6 +39,7 @@ public class TextBox
     text(value, position.x + 5, position.y + dimensions.y/2);
   }
   
+  // tilføjer tekst til tekstfeltet når en tast trykkes på
   public void keyPressed()
   {
     if (isSelected)
@@ -66,6 +68,7 @@ public class TextBox
     
   }
   
+  // vælger feltet hvis musen er inde i det, ellers "un-vælges" det.
   public void mouseReleased()
   {
     if (mouseX > position.x && mouseX < position.x + dimensions.x &&

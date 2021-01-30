@@ -29,6 +29,10 @@ class Match
     this.spectatorCount = spectatorCount;
   }
  
+  // resultatet af kampen.
+  // 0: hjemmeholdet vinder
+  // 1: uafgjort
+  // 2: udeholdet vinder
   public int getResult()
   {
     if (homeGoals > awayGoals)

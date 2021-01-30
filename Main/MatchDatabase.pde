@@ -1,4 +1,3 @@
-
 public class MatchDatabase
 {
   public Match[] Matches;
@@ -7,15 +6,20 @@ public class MatchDatabase
   {
     String[] lines = loadStrings("data/results.txt");
     
+    // reserverer plads i hukommelsen for alle kampene
     Matches = new Match[lines.length];
     
+    // looper igennem alle kampene i tekstfilen
     for (int i = 0; i < lines.length; i++)
     {
+      // finder visse data, der ikke direkte kan tages ud af tekstfilen og kræver førbehandling
       String[] data = split(lines[i], ';');
       
       int round = int(data[0].substring(1));
       String[] date = split(data[2], '/');
       String[] time = split(data[3], '.');
+      
+      // udfylder et Match objekt og tilføjer det til listen
       Match m = new Match(
         round, // round
         data[1], // weekday

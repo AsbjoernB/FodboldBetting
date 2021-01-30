@@ -1,8 +1,12 @@
 class Bet
 {
+  // kampen, der spilles på
   public Match match;
+  // oddsene for kampen
   public Odds odds;
+  // hvilket udfald, der gættes på
   public int guess;
+  // hvor mange penge, der spilles med
   public float money;
   
   public Bet(Match match, int guess, float money)
@@ -22,12 +26,12 @@ class Bet
     
     if (res == 0)
       return money * odds.homeOdds - money;
-    if (res == 1)
+    else if (res == 1)
       return money * odds.drawOdds - money;
-    if (res == 2)
+    else if (res == 2)
       return money * odds.awayOdds - money;
     
-    // not possible
+    // hvis det her sker er der gået noget seriøst galt
     return -money;
   }
 }

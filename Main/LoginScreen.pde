@@ -1,6 +1,5 @@
 public class LoginScreen extends Screen
 {
-  
   TextBox usernameInput;
   
   Button loginButton;
@@ -13,13 +12,15 @@ public class LoginScreen extends Screen
   
   public void update()
   {
+    // titel
     fill(255);
     textSize(24);
     textAlign(CENTER, CENTER);
     text("Indtast brugernavn",width/2, height/2-40);
     
+    // knap og text box
     fill(0);
-    textSize(11);
+    textSize(20);
     textAlign(LEFT, TOP);
     loginButton.update();
     usernameInput.update();
@@ -27,6 +28,7 @@ public class LoginScreen extends Screen
   
   public void mouseReleased()
   {
+    // input felt
     usernameInput.mouseReleased();
     
     if (usernameInput.value != "" && loginButton.tryPress())
