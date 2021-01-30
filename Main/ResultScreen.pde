@@ -124,7 +124,7 @@ public class ResultScreen extends Screen
     // money
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);
-    fill(0);
+    fill(249,166,2);
     text("Penge: " + nfc(currentUser.money, 2) + " skejs", ax+aw/2,ay+ah/2);
    
 
