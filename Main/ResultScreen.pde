@@ -78,7 +78,7 @@ public class ResultScreen extends Screen
         if (j == bets[i].match.getResult())
         {
           if (j == bets[i].guess)
-            fill(241, 247, 44);
+            fill(249,255,2);
           else
             fill(50, 230, 60);
         }
@@ -104,9 +104,9 @@ public class ResultScreen extends Screen
       
       // red / green
       if (payout < 0)
-        fill(255,0,0);
+        fill(205,92,92);
       else
-        fill(10, 175, 10);
+        fill(0, 115, 0);
         
       text(nfp(payout, 1, 2) + " skejs", mx+mw*4/5, my+75*i+mh/2);
     }
@@ -116,15 +116,15 @@ public class ResultScreen extends Screen
     rect(sx, sy, sw, sh);
     // red / green
       if (sum < 0)
-        fill(255,0,0);
+        fill(205,92,92);
       else
-        fill(10, 175, 10);
+        fill(0, 115, 0);
     text(nfc(sum,2) + " skejs", sx+sw/2, sy+sh/2);
     
     // money
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);
-    fill(0);
+    fill(249,166,2);
     text("Penge: " + nfc(currentUser.money, 2) + " skejs", ax+aw/2,ay+ah/2);
    
 

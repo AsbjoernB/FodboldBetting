@@ -21,11 +21,11 @@ class Bet
       return -money;
     
     if (res == 0)
-      return money * odds.odds_A - money;
+      return money * odds.homeOdds - money;
     if (res == 1)
-      return money * odds.odds_draw - money;
+      return money * odds.drawOdds - money;
     if (res == 2)
-      return money * odds.odds_B - money;
+      return money * odds.awayOdds - money;
     
     // not possible
     return -money;

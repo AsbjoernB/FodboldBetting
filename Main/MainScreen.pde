@@ -33,7 +33,7 @@ public class MainScreen extends Screen
     }
     tripleButtons = new TripleButton[6];
     for(int i=0; i<6; i++){
-      tripleButtons[i] = new TripleButton(new PVector(800,my+mh/10 + 75*i), new PVector(200, mh-mh/5), new String[]{nfc(odds[i].odds_A, 2), nfc(odds[i].odds_draw, 2), nfc(odds[i].odds_B, 2)}, color(115,240,130),color(100,200,100),color(150,255,200));
+      tripleButtons[i] = new TripleButton(new PVector(800,my+mh/10 + 75*i), new PVector(200, mh-mh/5), new String[]{nfc(odds[i].homeOdds, 2), nfc(odds[i].drawOdds, 2), nfc(odds[i].awayOdds, 2)}, color(115,240,130),color(100,200,100),color(150,255,200));
     }
     
     
@@ -81,7 +81,7 @@ public class MainScreen extends Screen
     textAlign(CENTER, CENTER);
     fill(190, 250, 200);
     rect(ax, ay, aw, ah);//amount
-    fill(0);
+    fill(249,166,2);
     text("Penge: " + nfc(currentUser.money, 2) + " skejs", ax+aw/2,ay+ah/2);
     
     // username
