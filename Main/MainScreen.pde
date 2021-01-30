@@ -75,15 +75,14 @@ public class MainScreen extends Screen
     
     // data om kampen
     textAlign(LEFT, CENTER);
-    Match[] match = matchDatabase.GetRoundMatches(currentUser.round);
     for(int i=0; i<6; i++){ // matches 
       fill(190, 250, 200);
       rect(mx,my+75*i,mw,mh);
       fill(0);
       textSize(24);
-      text(match[i].homeTeam+" - "+match[i].awayTeam, mx*2,my+75*i+mh/3);
+      text(matches[i].homeTeam+" - "+matches[i].awayTeam, mx*2,my+75*i+mh/3);
       textSize(17);
-      text(match[i].weekday+"dag d. "+match[i].day+"/"+match[i].month+" "+match[i].year+ " kl. "+match[i].hour+":"+nf(match[i].minute,2), mx*2,my+75*i+2*(mh/3));  
+      text(matches[i].weekday+"dag d. "+matches[i].day+"/"+matches[i].month+" "+matches[i].year+ " kl. "+matches[i].hour+":"+nf(matches[i].minute,2), mx*2,my+75*i+2*(mh/3));  
     }
 
     

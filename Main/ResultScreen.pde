@@ -53,9 +53,20 @@ public class ResultScreen extends Screen
     for(int i=0; i<bets.length; i++){ // matches 
       fill(190, 250, 200);
       rect(mx,my+75*i,mw,mh);
-      fill(0);
-      text(bets[i].match.homeTeam + " - " + bets[i].match.awayTeam, mx+mw/8,my+75*i+mh/2);
       
+      // data om kampen
+      textAlign(LEFT, CENTER);
+          
+      fill(190, 250, 200);
+      rect(mx,my+75*i,mw,mh);
+      fill(0);
+      textSize(24);
+      text(bets[i].match.homeTeam+" - "+bets[i].match.awayTeam, mx*2,my+75*i+mh/3);
+      textSize(17);
+      text(bets[i].match.homeGoals + " - " + bets[i].match.awayGoals, mx*2,my+75*i+2*(mh/3));
+
+      // tegner farvede kasser for hvem der vandt og hvad der blev bettet på
+      textAlign(CENTER, CENTER);
       for (int j = 0; j < 3; j++)
       {
         if (j == bets[i].match.getResult())
