@@ -50,7 +50,7 @@ public class ResultScreen extends Screen
     textAlign(CENTER, CENTER);
     
     // tegner alle kampene
-    for(int i=0; i<6; i++){ // matches 
+    for(int i=0; i<bets.length; i++){ // matches 
       fill(190, 250, 200);
       rect(mx,my+75*i,mw,mh);
       fill(0);

@@ -56,7 +56,9 @@ public class MainScreen extends Screen
     fill(255);
     text("BET PÅ RUNDE "+currentUser.round, mx, uy+uh/2);
     fill(0);
-    textSize(11);
+    
+    
+    textSize(14);
     
     // nuværende penge
     textAlign(CENTER, CENTER);
@@ -102,15 +104,19 @@ public class MainScreen extends Screen
   {
     if (resultButton.tryPress())
     {
-      Bet[] bets = new Bet[matches.length];
+      ArrayList<Bet> bets = new ArrayList<Bet>();
       for (int i = 0; i < matches.length; i++)
       {
-        bets[i] = new Bet(matches[i], tripleButtons[i].selectedOption, float(moneyInputs[i].value));
+        // tilføjer kun bettet til resultatskærmen hvis inputtet er gyldigt
+        if (tripleButtons[i].selectedOption != -1 && float(moneyInputs[i].value) > 0)
+        {
+          bets.add(new Bet(matches[i], tripleButtons[i].selectedOption, float(moneyInputs[i].value)));
+        }
       }
       currentUser.round++;
       if (currentUser.round > 33)
         currentUser.round = 1;      
-      currentScreen = new ResultScreen(bets);
+      currentScreen = new ResultScreen(bets.toArray(new Bet[bets.size()]));
     }
     for (TripleButton tp : tripleButtons)
     {
