@@ -1,5 +1,5 @@
 - lav programmet færdigt
-    - fix layout på resultatskærm
+√   - fix layout på resultatskærm 
     - undgå at gå i minuspenge
     - kun hav de ting, man bettede på på resultatskærmen
     - dokumentér kode
@@ -7,4 +7,3 @@
     - 10000 tegn
     - dokumentér kode
     - designbeslutninger
-    - 
